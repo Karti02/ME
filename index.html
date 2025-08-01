@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Karti | CSE Student @ IKGPTU</title>
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #e9e0e9;
+    }
+
+    header {
+      background-color: #cf58b9;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    header img {
+      height: 80px;
+      border-radius: 50%;
+      animation: bounce 2s infinite;
+    }
+
+    nav {
+      background-color: #d193be;
+      text-align: center;
+    }
+
+    nav a {
+      display: inline-block;
+      color: white;
+      padding: 15px 20px;
+      text-decoration: none;
+      transition: background 0.3s ease;
+    }
+
+    nav a:hover {
+      background-color: #0073e6;
+    }
+
+    section {
+      padding: 40px 20px;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    .card {
+      background: white;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
+      margin-bottom: 30px;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.7s ease-in-out;
+    }
+
+    .card.visible {
+      opacity: 1;
+      transform: translateY(0px);
+    }
+
+    h2 {
+      color: #5057da;
+    }
+
+    ul {
+      line-height: 1.8;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      box-sizing: border-box;
+    }
+
+    .contact-form input[type="submit"] {
+      background-color: #003366;
+      color: white;
+      border: none;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: transform 0.3s ease;
+    }
+
+    .contact-form input[type="submit"]:hover {
+      transform: scale(1.05);
+    }
+
+    footer {
+      background-color: #ce5db9;
+      color: white;
+      text-align: center;
+      padding: 15px;
+    }
+
+    @keyframes bounce {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <img src="https://www.motachashma.com/images/exams/ikgptu-mba-admission.jpg" alt="IKGPTU Logo" width="100" height="100">
+  <h1><i>Hi, I'm Karti</i></h1>
+  <p>CSE Student | IKGPTU Main Campus | NCC Cadet </p>
+</header>
+
+<nav>
+  <a href="#about">About</a>
+  <a href="#interests">Interests</a>
+  <a href="#skills">Skills</a>
+  <a href="#achievements">Achievements</a>
+  <a href="#contact">Contact</a>
+</nav>
+
+<section id="about" class="card">
+  <h2>About Me</h2>
+  <p>I'm a passionate Computer Science Engineering student from IKGPTU with a strong interest in national service, web development, and AI. I love solving problems, building things from scratch, and contributing to India’s technological strength. 🇮🇳</p>
+</section>
+
+<section id="interests" class="card">
+  <h2>My Interests</h2>
+  <ul>
+    <li>💻 Web & App Development</li>
+    <li>🤖 AI/ML & Automation</li>
+    <li>🎖️ NCC Cadet & Patriotism</li>
+    <li>🎮 Gaming & Coding Challenges</li>
+    <li>📚 Self-Learning & Reading Tech Blogs</li>
+  </ul>
+</section>
+
+<section id="skills" class="card">
+  <h2>Technical Skills</h2>
+  <ul>
+    <li>🌐 HTML, CSS, JavaScript</li>
+    <li>🐍 Python, C, C++</li>
+    <li>🧠 Machine Learning Basics</li>
+    <li>🛠️ Git, VS Code, Jupyter</li>
+  </ul>
+</section>
+
+<section id="achievements" class="card">
+  <h2>Achievements</h2>
+  <ul>
+    <li>🏅 NCC "A" Certificate Holder</li>
+    <li>🛡️ Passionate about joining DRDO</li>
+    <li>💡 Built mini projects in web dev</li>
+    <li>🏆 Active contributor to class projects</li>
+    <li>📜 Completing Python Course @ Pregrad</li>
+  </ul>
+</section>
+
+<section id="contact" class="card">
+  <h2>Contact Me</h2>
+  <form class="contact-form" onsubmit="return validateForm()">
+    <label for="name">Your Name:</label>
+    <input type="text" id="name" required>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" required>
+
+    <label for="message">Message:</label>
+    <textarea id="message" rows="4" required></textarea>
+
+    <input type="submit" value="Send Message">
+  </form>
+</section>
+
+<footer>
+  <p>| Made with 💗🌸 by Karti | IKGPTU |</p>
+</footer>
+
+<script>
+  function validateForm() {
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const message = document.getElementById("message").value.trim();
+
+    if (!name || !email || !message) {
+      alert("Please fill in all fields.");
+      return false;
+    }
+
+    const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+    if (!email.match(emailPattern)) {
+      alert("Invalid email format.");
+      return false;
+    }
+
+    alert("Message sent successfully!");
+    return true;
+  }
+
+  const cards = document.querySelectorAll('.card');
+
+  const revealOnScroll = () => {
+    const triggerBottom = window.innerHeight * 0.85;
+
+    cards.forEach(card => {
+      const cardTop = card.getBoundingClientRect().top;
+
+      if (cardTop < triggerBottom) {
+        card.classList.add('visible');
+      }
+    });
+  };
+
+  window.addEventListener('scroll', revealOnScroll);
+  window.addEventListener('load', revealOnScroll);
+</script>
+
+</body>
+</html>
